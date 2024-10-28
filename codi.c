@@ -24,3 +24,22 @@ void InitData(){
         V3[i]=(((i*j)%5)?-1:1)*(100.0*(rand()/(1.0*RAND_MAX)));
     }
 }
+
+void PrintVect( float vect[N], int from, int numel ){
+    if (from < 0 || from >= N || from + numel > N) {
+        printf("Índices fuera de límites.\n");
+        return;
+    }
+
+    for (int i = from; i < from + numel; i++) {
+        printf("%.2f ", vect[i]);
+    }
+    printf("\n"); 
+}
+
+int main() {
+    InitData();
+    PrintVect(V1, 2, 5); 
+
+    return 0;
+}
