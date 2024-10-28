@@ -25,6 +25,7 @@ void InitData(){
     }
 }
 
+// 1. Per a comprovar que el codi funciona:
 void PrintVect( float vect[N], int from, int numel ){
     if (from < 0 || from >= N || from + numel > N) {
         printf("Índices fuera de límites.\n");
@@ -36,6 +37,9 @@ void PrintVect( float vect[N], int from, int numel ){
     }
     printf("\n"); 
 }
+
+// 2. Amb el mateix objectiu, desenvoluparem una funció que mostri per pantalla un cert nombre d’elements (numel) d’una fila (row) d’una matriu a partir d’una posició donada (from).
+void PrintRow( float  mat[N][N], int row, int numel)
 
 int main() {
     InitData();
