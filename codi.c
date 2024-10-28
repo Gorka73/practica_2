@@ -2,9 +2,9 @@
 #include <stdlib.h>
 
 #define N 512
-int Mat[N][N];
-int MatDD[N][N];
-int V1[N],V2[N],V3[N],V4[N];
+float Mat[N][N];
+float MatDD[N][N];
+float V1[N],V2[N],V3[N],V4[N];
 
 void InitData(){
     int i,j;
