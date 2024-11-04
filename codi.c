@@ -33,7 +33,7 @@ void PrintVect( float vect[N], int from, int numel ){
     }
 
     for (int i = from; i < from + numel; i++) {
-        printf("%.2f ", vect[i]);
+        printf("%.6f ", vect[i]);
     }
     printf("\n");
 }
