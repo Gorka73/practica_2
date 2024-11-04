@@ -55,6 +55,21 @@ void PrintRow( float  mat[N][N], int row, int numel){
     printf("\n");
 }
 
+// 3. Multiplicacio d'un vector amb una constant (alfa). La funcio retorna el vector corresponent.
+void MultEscalar( float vect[N], float vectres[N], float alfa ){
+    for (int i = 0; i < N; i++){
+        vectres[i] = alfa * vect[i];
+    }
+}
+
+// 4. Producte escalar de dos vectors.
+float Scalar( float vect1[N], float vect2[N] ){
+    float producte = 0.0;
+    for (int i = 0; i < N; i++){
+        producte += vect1[i] * vect2[i];
+    }
+    return producte;
+}
 
 int main() {
     InitData();
