@@ -42,7 +42,7 @@ void PrintVect( float vect[N], int from, int numel ){
 // 2. Amb el mateix objectiu, desenvoluparem una funció que mostri per pantalla un cert nombre d’elements (numel) d’una fila (row) d’una matriu a partir d’una posició donada (from).
 void PrintRow( float mat[N][N], int row, int from, int numel ) {
     for (int i = from; i < from + numel; i++) {
-        printf("%.2f ", mat[row][i]);
+        printf("%.6f ", mat[row][i]);
     }
 }
 
@@ -69,7 +69,8 @@ float Magnitude( float vect[N] ){
         for ( m=0; m<N; m++ ){
                 sumatori+=vect[m]*vect[m];
         }
-        return sqrt(sumatori);
+	sumatori = sqrt(sumatori);
+        return sumatori;
 }
 
 //6. Els dos vectors són ortogonals (angle recte)
@@ -88,13 +89,14 @@ int Ortogonal( float vect1[N], float vect2[N] ){
 
 //7. Vector projecció sobre un altre vector
 void Projection( float vect1[N], float vect2[N], float vectres[N] ){
-        float nmdor; // Numerador = Producte Escalar entre 2 vectors. Cridem la funció Scalar per no haver-ho de fer de nou.
+        float nmdor = 0.0; // Numerador = Producte Escalar entre 2 vectors. Cridem la funció Scalar per no haver-ho de fer de nou.
         nmdor=Scalar(vect1, vect2);
-        float dmdor; //El denominador és el mòdul del vector 2. Cridem la funció Magnitude per no haver-ho de fer de nou.
-        dmdor=Magnitude(vect2); float divisio1; //Divisió entre el numerador i denominador.
+        float dmdor = 0.0; //El denominador és el mòdul del vector 2. Cridem la funció Magnitude per no haver-ho de fer de nou.
+        dmdor=Magnitude(vect2); 
+	float divisio1 = 0.0; //Divisió entre el numerador i denominador.
         divisio1=nmdor/dmdor;
         // Reutilitzem la funció MultEscalar per a calcular el resultat.
-        MultEscalar(vect2, vectres, divisio1)
+        MultEscalar(vect2, vectres, divisio1);
 }
 
 //8. Infini-norma d’una matriu, on l'f serà el comptador de files i la c el comptador de columnes
@@ -307,23 +309,24 @@ int main() {
         //J
         float MatxV2[N];
         Matriu_x_Vector(Mat, V2, MatxV2);
-        printf("Els elements 0 a 9 del resultat de Mat x v2 són:\n");
+        printf("Els elements 0 a 9 del resultat de Mat per v2 són:\n");
         PrintVect(MatxV2, 0, 10);
 
 
         //K
         float solució1[N];
         if (Jacobi(MatDD, V3, solució1, 1)) {
-                printf("Els elements 0 a 9 de la solució (1 it) del sistema són:\n");
+                printf("Els elements 0 a 9 de la solució (1 iter) del sistema són:\n");
                 PrintVect(solució1, 0, 10);
         } else {
                 printf("Com que MatDD no és diagonal dominant, no és possible fer Jacobi\n");
         }
         float solució1000[N];
         if (Jacobi(MatDD, V3, solució1000, 1000)) {
-                printf("Els elements 0 a 9 de la solució (1000 its) del sistema són:\n");
+                printf("Els elements 0 a 9 de la solució (1000 ites) del sistema són:\n");
                 PrintVect(solució1000, 0, 10);
         } else {
                 printf("Com que MatDD no és diagonal dominant, no és possible fer Jacobi\n");
         }
 }
+
